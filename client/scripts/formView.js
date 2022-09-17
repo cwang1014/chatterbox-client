@@ -5,6 +5,7 @@
 var FormView = {
 
   $form: $('form'),
+  $input: $('input'),
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
@@ -16,7 +17,10 @@ var FormView = {
 
     // TODO: Currently, this is all handleSubmit does.
     // Make this function actually send a message to the Parse API.
-  
+    var text = FormView.$input.val();
+    var roomname = '';
+    console.log(text);
+
     console.log('click!');
   },
 

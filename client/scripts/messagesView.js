@@ -6,8 +6,8 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-    // TODO: Perform any work which needs to be done
-    // when this view loads.
+    // TODO: Perform any work which needs to be done when this view loads.
+    // MessagesView.$chats.appendTo('test');
   },
 
   render: function() {
@@ -15,7 +15,14 @@ var MessagesView = {
   },
 
   renderMessage: function(message) {
+    var messageId = message.message_id;
+    var username = message.username;
+    var roomname = message.roomname;
+    var text = message.text;
+    var $message = $(`<p>${username} posted: ${text} in ${roomname}</p>`);
     // TODO: Render a single message.
+    MessagesView.$chats.append($message);
+    // console.log(message);
   },
 
   handleClick: function(event) {
