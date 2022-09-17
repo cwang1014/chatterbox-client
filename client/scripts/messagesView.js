@@ -19,7 +19,8 @@ var MessagesView = {
     var username = message.username;
     var roomname = message.roomname;
     var text = message.text;
-    var $message = $(`<p>${username} posted: ${text} in ${roomname}</p>`);
+    var $message = MessageView.render(message);
+    // var $message = $(`<p>${username} posted: ${text} in ${roomname}</p>`);
     // TODO: Render a single message.
     MessagesView.$chats.append($message);
     // console.log(message);

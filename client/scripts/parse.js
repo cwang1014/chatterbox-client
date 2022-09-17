@@ -12,12 +12,29 @@ var Parse = {
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
-      success: successCB,
+      success: function(data) {
+        console.log('chatterbox: Message created');
+      },
       error: errorCB || function(error) {
-        console.error('chatterbox: Failed to fetch messages', error);
+        console.error('chatterbox: Failed to create message', error);
       }
     });
   },
+
+  // createRoom: function(roomname, successCB, errorCB = null) {
+  //   $.ajax({
+  //     url: Parse.server,
+  //     type: 'POST',
+  //     data: JSON.stringify(roomname),
+  //     contentType: 'application/json',
+  //     success: function(data) {
+  //       console.log('chatterbox: Room created');
+  //     },
+  //     error: errorCB || function(error) {
+  //       console.error('chatterbox: Failed to create room', error);
+  //     }
+  //   });
+  // },
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({

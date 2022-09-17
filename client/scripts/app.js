@@ -5,22 +5,27 @@
 var App = {
 
   $spinner: $('.spinner img'),
+  $chats: $('#chats'),
 
   username: 'anonymous',
+  roomname: '',
 
   initialize: function() {
+
     App.username = window.location.search.substr(10);
-
-    FormView.initialize();
-    RoomsView.initialize();
-    MessagesView.initialize();
-
+    // App.roomname declaration??
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App);
     App.stopSpinner();
 
+    FormView.initialize();
+    RoomsView.initialize();
+    MessagesView.initialize();
+
     // TODO: Make sure the app loads data from the API continually, instead of just once at the start.
+    App.$chats.prepend('<button id="refresh">button</button>');
+    $('#refresh').on('click', App.handleRefresh);
   },
 
   fetch: function(callback = ()=>{}) {
@@ -36,6 +41,7 @@ var App = {
 
         Rooms.add(data[i].roomname);
       }
+      // console.log(data);
 
 
       // TODO: Use the data to update Messages and Rooms and re-render the corresponding views.
@@ -51,5 +57,9 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
-  }
+  },
+
+  handleRefresh: function(event) {
+    App.initialize();
+  },
 };

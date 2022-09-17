@@ -6,9 +6,15 @@ var FormView = {
 
   $form: $('form'),
   $input: $('input'),
+  $select: $('select'),
+  $divRooms: $('div #rooms'),
+  // $rooms: $('.rooms'),
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
+    $('button').on('click', FormView.handleAddRoom);
+    FormView.$divRooms.append('<form action="#" id="send" method="post"><input type="text" class="rooms"/></form>');
+
   },
 
   handleSubmit: function(event) {
@@ -18,10 +24,26 @@ var FormView = {
     // TODO: Currently, this is all handleSubmit does.
     // Make this function actually send a message to the Parse API.
     var text = FormView.$input.val();
-    var roomname = '';
-    console.log(text);
-
+    var username = window.App.username;
+    var roomname = FormView.$select.val();
     console.log('click!');
+    // Parse.create(newObj)
+    var formMessage = {
+      username: username,
+      text: text,
+      roomname: roomname
+    };
+    Parse.create(formMessage);
+  },
+
+  handleAddRoom: function(event) {
+    var $newRoom = $('.rooms');
+    Rooms.add($newRoom.val());
+    Parse.createRoom($newRoom.val());
+    // console.log(Rooms._data);
+    // add input room to Rooms._data array
+    //console.log('$newRoom', $newRoom);
+    // console.log('formView.$rooms.val()', FormView);
   },
 
   setStatus: function(active) {

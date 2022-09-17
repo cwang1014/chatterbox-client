@@ -10,6 +10,7 @@ var RoomsView = {
     // TODO: Perform any work which needs to be done
     // when this view loads.
     // RoomsView.renderRoom(data[i].roomname);
+    // console.log(Rooms._data);
   },
 
   render: function() {
