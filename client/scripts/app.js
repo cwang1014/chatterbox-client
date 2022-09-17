@@ -24,8 +24,8 @@ var App = {
     MessagesView.initialize();
 
     // TODO: Make sure the app loads data from the API continually, instead of just once at the start.
-    App.$chats.prepend('<button id="refresh">button</button>');
-    $('#refresh').on('click', App.handleRefresh);
+    // App.$chats.prepend('<button id="refresh">button</button>');
+    // $('#refresh').on('click', App.handleRefresh);
   },
 
   fetch: function(callback = ()=>{}) {
@@ -60,6 +60,9 @@ var App = {
   },
 
   handleRefresh: function(event) {
-    App.initialize();
+    App.fetch(App);
+    FormView.initialize();
+    RoomsView.initialize();
+    MessagesView.initialize();
   },
 };

@@ -27,7 +27,6 @@ var FormView = {
     var username = window.App.username;
     var roomname = FormView.$select.val();
     console.log('click!');
-    // Parse.create(newObj)
     var formMessage = {
       username: username,
       text: text,
@@ -39,7 +38,7 @@ var FormView = {
   handleAddRoom: function(event) {
     var $newRoom = $('.rooms');
     Rooms.add($newRoom.val());
-    Parse.createRoom($newRoom.val());
+    // Parse.createRoom($newRoom.val());
     // console.log(Rooms._data);
     // add input room to Rooms._data array
     //console.log('$newRoom', $newRoom);

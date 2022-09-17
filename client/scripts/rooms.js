@@ -17,7 +17,7 @@ var Rooms = {
     var message = {
       username: username,
       text: text,
-      roomname: roomname
+      rname: rname
     };
     if (!Rooms._data.includes(roomname)) {
       Rooms._data.push(roomname);
